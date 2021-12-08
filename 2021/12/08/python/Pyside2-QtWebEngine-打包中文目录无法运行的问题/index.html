@@ -16,19 +16,24 @@
   <meta name="description" content="这是菜鸟程序猿镭仔的微博">
   <meta name="author" content="leizi">
   <meta name="keywords" content="">
-  <meta name="description" content="记录自己的编程技术之路">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="http://example.com/about/index.html">
+  <meta name="description" content="我的Pyside2项目使用pyinstaller打包，打包后目录里存在一个qt.conf文件 你需要在 qt.conf 里正确的指定打包后的Pyside2的配置目录，如下  在你运行程序的时候，QtWebEngine才能正确的找到下面这些文件  打包后在中文目录也可以运行了!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pyside2 QtWebEngine 打包中文目录无法运行的问题">
+<meta property="og:url" content="http://example.com/2021/12/08/python/Pyside2-QtWebEngine-%E6%89%93%E5%8C%85%E4%B8%AD%E6%96%87%E7%9B%AE%E5%BD%95%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Leizi的博客">
-<meta property="og:description" content="记录自己的编程技术之路">
+<meta property="og:description" content="我的Pyside2项目使用pyinstaller打包，打包后目录里存在一个qt.conf文件 你需要在 qt.conf 里正确的指定打包后的Pyside2的配置目录，如下  在你运行程序的时候，QtWebEngine才能正确的找到下面这些文件  打包后在中文目录也可以运行了!">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-06T14:30:51.000Z">
-<meta property="article:modified_time" content="2021-12-07T15:31:22.664Z">
+<meta property="og:image" content="http://example.com/img/python/image-1.png">
+<meta property="og:image" content="http://example.com/img/python/image-2.png">
+<meta property="article:published_time" content="2021-12-08T09:10:58.000Z">
+<meta property="article:modified_time" content="2021-12-08T14:44:19.844Z">
 <meta property="article:author" content="leizi">
+<meta property="article:tag" content="打包">
+<meta property="article:tag" content="配置">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/python/image-1.png">
   
-  <title>关于 - Leizi的博客</title>
+  <title>Pyside2 QtWebEngine 打包中文目录无法运行的问题 - Leizi的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -73,7 +78,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -174,17 +179,47 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="每当天空泛起彩色霞光，带着回忆和幻想一起飞翔~">
+            <span class="h2" id="subtitle" title="Pyside2 QtWebEngine 打包中文目录无法运行的问题">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-08 17:10" pubdate>
+        2021年12月8日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      131 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -193,78 +228,101 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
-          
-            <div class="about-avatar">
-              <img src="/img/avatar.png" srcset="/img/loading.gif" lazyload
-                   class="img-fluid" alt="avatar">
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Pyside2 QtWebEngine 打包中文目录无法运行的问题</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>我的Pyside2项目使用pyinstaller打包，打包后目录里存在一个qt.conf文件</p>
+<p><strong>你需要在 qt.conf 里正确的指定打包后的Pyside2的配置目录，如下</strong></p>
+<p><img src="/img/python/image-1.png" srcset="/img/loading.gif" lazyload alt="image-20211208170550823"></p>
+<p>在你运行程序的时候，<strong>QtWebEngine</strong>才能正确的找到下面这些文件</p>
+<p><img src="/img/python/image-2.png" srcset="/img/loading.gif" lazyload alt="image-20211208170913010"></p>
+<p>打包后在中文目录也可以运行了!</p>
+</blockquote>
+
             </div>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python/">python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%89%93%E5%8C%85/">打包</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    转载请表明出处
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
                 
 
-<div class="text-center">
-  <div class="about-info">
-    <div class="about-name">Leizi</div>
-    <div class="about-intro">程序猿</div>
-    <div class="about-icons">
-      
-        
-        
-        
-        <a href=https://github.com class="
-           hint--bottom hint--rounded"
-           aria-label=GitHub
-           target="_blank"
-        >
-          <i class="iconfont icon-github-fill" aria-hidden="true"></i>
-          
-        </a>
-      
-        
-        
-        
-        <a href=https://douban.com class="
-           hint--bottom hint--rounded"
-           aria-label=豆瓣
-           target="_blank"
-        >
-          <i class="iconfont icon-douban-fill" aria-hidden="true"></i>
-          
-        </a>
-      
+              </article>
+            
+          </article>
+        </div>
+      </div>
     </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
   </div>
 </div>
 
-<article class="about-content page-content mt-5">
-  <div class="markdown-body">
-    <p>记录自己的编程技术之路</p>
+<!-- Custom -->
 
-  </div>
 
-  
-    <!-- Comments -->
-    <article class="comments" id="comments" lazyload>
-      
-      
-        
-      
-      
-
-    </article>
-  
-</article>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     
 
     

@@ -152,7 +152,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/home_banner.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -192,19 +192,26 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/12/05/hello-world/" target="_self">
-          Hello World
+        <a href="/2021/12/08/python/Pyside2-QtWebEngine-%E6%89%93%E5%8C%85%E4%B8%AD%E6%96%87%E7%9B%AE%E5%BD%95%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+          Pyside2 QtWebEngine 打包中文目录无法运行的问题
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/12/05/hello-world/" target="_self">
+        <a href="/2021/12/08/python/Pyside2-QtWebEngine-%E6%89%93%E5%8C%85%E4%B8%AD%E6%96%87%E7%9B%AE%E5%BD%95%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
           
           
             
           
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
+          
+我的Pyside2项目使用pyinstaller打包，打包后目录里存在一个qt.conf文件
+你需要在 qt.conf 里正确的指定打包后的Pyside2的配置目录，如下
+
+在你运行程序的时候，QtWebEngine才能正确的找到下面这些文件
+
+打包后在中文目录也可以运行了!
+
+
         </a>
       </p>
 
@@ -212,12 +219,28 @@ Quick
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-12-05 00:00" pubdate>
-              2021-12-05
+            <time datetime="2021-12-08 17:10" pubdate>
+              2021-12-08
             </time>
           </div>
         
         
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%89%93%E5%8C%85/">打包</a>
+            
+              <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+            
+          </div>
         
       </div>
     </article>
@@ -269,7 +292,7 @@ Quick
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+     <span>Yuezi</span> <i class="iconfont icon-love"></i> <span>Leizi</span> 
   </div>
   
 
