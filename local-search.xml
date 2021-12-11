@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Pyside2右键菜单添加快捷键无效的解决办法</title>
+    <link href="/2021/12/11/python/Pyside2%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%B7%BB%E5%8A%A0%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%97%A0%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <url>/2021/12/11/python/Pyside2%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%B7%BB%E5%8A%A0%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%97%A0%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>今天在QDockWidget里加入了一个自定义的右键菜单，并加入了快捷键，代码如下</p></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span>(<span class="hljs-params">QDockWidget</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, parent=<span class="hljs-literal">None</span></span>):</span><br>        <span class="hljs-built_in">super</span>(Demo,self).__init__(parent)<br>        self.menu = QMenu(self)  <span class="hljs-comment">#  加入菜单</span><br>        self.test_action = self.menu.addAction(self.tr(<span class="hljs-string">&#x27;菜单项1&#x27;</span>))<br>        self.test_action.setShortCut(QKeySequence(Qt.Key_E))  <span class="hljs-comment">#  快捷键为键盘的E键</span><br>        self.connection()<br>        self.setContextMenuPolicy(Qt.CustomContextMenu)<br>    <br>    <span class="hljs-comment">#  连接信号处理方法</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">connection</span>(<span class="hljs-params">self</span>):</span><br>        self.test_action.triggered.connect(self.test_func)<br>        self.customContextMenuRequested.connect(self.showContextMenu, Qt.UniqueConnection)  <span class="hljs-comment">#  右键菜单触发的事件</span><br>    <br>    <span class="hljs-comment">#  菜单项1触发的方法</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_func</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;触发 菜单项1&#x27;</span>)<br>        <br>    <span class="hljs-comment">#  显示右键菜单</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">showContextMenu</span>(<span class="hljs-params">self, pos</span>):</span><br>        self.menu.move(QCursor.pos())<br>        self.menu.show()<br>        <br></code></pre></td></tr></table></figure><blockquote><p>但是在右键出现菜单之后，<strong>点击键盘 e 键 并没有触发对应的方法</strong></p><p>明明加上了快捷键，但是没有起作用</p></blockquote><blockquote><p>后续经过多次尝试，原来，对于以上这个情况想要加入菜单的快捷键，你需要使用<strong>QShortcut</strong>，将这个类实例的parent设置为Qmenu实例(self.menu)，代码如下</p></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span>(<span class="hljs-params">QDockWidget</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, parent=<span class="hljs-literal">None</span></span>):</span><br>        <span class="hljs-built_in">super</span>(Demo,self).__init__(parent)<br>        self.menu = QMenu(self)  <span class="hljs-comment">#  加入菜单</span><br>        self.test_action = self.menu.addAction(self.tr(<span class="hljs-string">&#x27;菜单项1&#x27;</span>))<br>        self.test_action_shortcut = QShortcut(QKeySequence(Qt.Key_E), self.menu) <br>        self.test_action.setShortCut(QKeySequence(Qt.Key_E))  <span class="hljs-comment">#  快捷键为键盘的E键</span><br>        self.connection()<br>        self.setContextMenuPolicy(Qt.CustomContextMenu)<br>    <br>    <span class="hljs-comment">#  连接信号处理方法</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">connection</span>(<span class="hljs-params">self</span>):</span><br>        self.test_action.triggered.connect(self.test_func)  <span class="hljs-comment">#  绑定菜单项1触发时候的方法</span><br>        self.test_action_shortcut.activated.connect(self.test_func)  <span class="hljs-comment">#  绑定快捷键需要触发的方法，同菜单项1</span><br>        self.customContextMenuRequested.connect(self.showContextMenu, Qt.UniqueConnection)  <span class="hljs-comment">#  右键菜单触发的事件</span><br>    <br>    <span class="hljs-comment">#  菜单项1触发的方法</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_func</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;触发 菜单项1&#x27;</span>)<br>        <br>    <span class="hljs-comment">#  显示右键菜单</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">showContextMenu</span>(<span class="hljs-params">self, pos</span>):</span><br>        self.menu.move(QCursor.pos())<br>        self.menu.show()<br></code></pre></td></tr></table></figure><p>问题解决，点击右键出现菜单，再敲击键盘e，触发了test_func</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>python</category>
+      
+      <category>pyside2</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>代码</tag>
+      
+      <tag>bug修复</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Pyside2 QtWebEngine 打包中文目录无法运行的问题</title>
     <link href="/2021/12/08/python/Pyside2-QtWebEngine-%E6%89%93%E5%8C%85%E4%B8%AD%E6%96%87%E7%9B%AE%E5%BD%95%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <url>/2021/12/08/python/Pyside2-QtWebEngine-%E6%89%93%E5%8C%85%E4%B8%AD%E6%96%87%E7%9B%AE%E5%BD%95%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98/</url>
@@ -14,6 +43,8 @@
     <categories>
       
       <category>python</category>
+      
+      <category>pyside2</category>
       
     </categories>
     
