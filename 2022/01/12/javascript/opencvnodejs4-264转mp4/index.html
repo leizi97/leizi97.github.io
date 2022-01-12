@@ -18,18 +18,18 @@
   <meta name="keywords" content="">
   <meta name="description" content="opencvnodejs4-264转mp41234567891011121314151617181920212223242526272829const cv2 &#x3D; require(&quot;opencvnodejs4&quot;);&#x2F;*** @params video264Path 264视频路径* @params mp4Path 保存mp4的路径* @params Fps 视频帧数* @ret">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pyside2 minio上传进度条无法触发信号的问题">
+<meta property="og:title" content="Opencvnodejs4-264转mp4">
 <meta property="og:url" content="http://example.com/2022/01/12/javascript/opencvnodejs4-264%E8%BD%ACmp4/index.html">
 <meta property="og:site_name" content="Leizi的博客">
 <meta property="og:description" content="opencvnodejs4-264转mp41234567891011121314151617181920212223242526272829const cv2 &#x3D; require(&quot;opencvnodejs4&quot;);&#x2F;*** @params video264Path 264视频路径* @params mp4Path 保存mp4的路径* @params Fps 视频帧数* @ret">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-12T14:27:30.411Z">
-<meta property="article:modified_time" content="2022-01-12T14:30:06.639Z">
+<meta property="article:modified_time" content="2022-01-12T14:32:31.195Z">
 <meta property="article:author" content="leizi">
 <meta property="article:tag" content="代码">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>Pyside2 minio上传进度条无法触发信号的问题 - Leizi的博客</title>
+  <title>Opencvnodejs4-264转mp4 - Leizi的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Pyside2 minio上传进度条无法触发信号的问题">
+            <span class="h2" id="subtitle" title="Opencvnodejs4-264转mp4">
               
             </span>
 
@@ -247,7 +247,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Pyside2 minio上传进度条无法触发信号的问题</h1>
+            <h1 style="display: none">Opencvnodejs4-264转mp4</h1>
             
             <div class="markdown-body">
               <h2 id="opencvnodejs4-264转mp4"><a href="#opencvnodejs4-264转mp4" class="headerlink" title="opencvnodejs4-264转mp4"></a>opencvnodejs4-264转mp4</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> cv2 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;opencvnodejs4&quot;</span>);<br><span class="hljs-comment">/**</span><br><span class="hljs-comment">* <span class="hljs-doctag">@params </span>video264Path 264视频路径</span><br><span class="hljs-comment">* <span class="hljs-doctag">@params </span>mp4Path 保存mp4的路径</span><br><span class="hljs-comment">* <span class="hljs-doctag">@params </span>Fps 视频帧数</span><br><span class="hljs-comment">* <span class="hljs-doctag">@returns </span>totalFrame 总帧数</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">v264Tomp4</span>(<span class="hljs-params">video264Path, mp4Path, Fps</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> fourcc = cv2.VideoWriter.fourcc(<span class="hljs-string">&#x27;MP4V&#x27;</span>); <span class="hljs-comment">//编码，可能会出现提示，但是生成的mp4可以正确运行</span><br>    <span class="hljs-keyword">let</span> writer = <span class="hljs-literal">null</span>; <br>    <span class="hljs-keyword">const</span> Vcap = <span class="hljs-keyword">new</span> cv2.VideoCapture(video264Path)<br>    <span class="hljs-keyword">let</span> totalFrame = <span class="hljs-number">0</span>; <span class="hljs-comment">//记录总帧数，264视频总帧数获取出来为负数，也无法使用set跳转到某一帧</span><br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>        <span class="hljs-keyword">const</span> frame = <span class="hljs-keyword">await</span> Vcap.readAsync(); <span class="hljs-comment">//type:Mat Mat.cols:width  Mat.rows: height</span><br>        totalFrame += <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span>(frame.empty) &#123;<br>            Vcap.release()<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(!writer) &#123;<br>            writer = <span class="hljs-keyword">new</span> cv2.VideoWriter(mp4Path, fourcc, <span class="hljs-built_in">parseInt</span>(Fps), <span class="hljs-keyword">new</span> cv2.Size(frame.cols, frame.rows)); <span class="hljs-comment">//Size无法随意设置，只能读取到某一帧，然后使用这一帧的大小来设置</span><br>        &#125;<br>        <span class="hljs-keyword">await</span> writer.writeAsync(frame)<br>    &#125;<br>    writer &amp;&amp; writer.release()<br>    <span class="hljs-keyword">return</span> totalFrame<br>&#125;<br>v264Tomp4(<span class="hljs-string">&#x27;D:/xxxx/xxx/a.264&#x27;</span>, <span class="hljs-string">&#x27;F:/yyy/yyy/b.mp4&#x27;</span>, <span class="hljs-number">60</span>); <span class="hljs-comment">//执行</span><br><br></code></pre></td></tr></table></figure>
@@ -293,7 +293,7 @@
                     
                     
                       <a href="/2022/01/12/python/pyinstaller%E5%9F%BA%E7%A1%80%E9%98%B2%E5%8F%8D%E7%BC%96%E8%AF%91/">
-                        <span class="hidden-mobile">Pyside2 minio上传进度条无法触发信号的问题</span>
+                        <span class="hidden-mobile">Pyinstaller基础防反编译</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
