@@ -16,21 +16,18 @@
   <meta name="description" content="这是菜鸟程序猿镭仔的微博">
   <meta name="author" content="leizi">
   <meta name="keywords" content="">
-  <meta name="description" content="pyside2使用python的minio api上传文件时，出现时进度条不更新的bug，代码如下  123456789101112131415161718from xxx import minioClientfrom xxx import Progressclass UpLoadSplitProgressBar(QDialog):    #... 代码    def __init__(self">
+  <meta name="description" content="pyinstaller基础防反编译1234567891011121314151617181920212223242526272829303132333435363738block_cipher &#x3D; pyi_crypto.PyiBlockCipher(key&#x3D;&amp;#x27;0123456789ABCDEF&amp;#x27;)a &#x3D; Analysis(    [&amp;#x27;main.py&amp;#x27;],">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pyside2 minio上传进度条无法触发信号的问题">
-<meta property="og:url" content="http://example.com/2021/12/29/python/Pyside2%20minio%E4%B8%8A%E4%BC%A0%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%97%A0%E6%B3%95%E8%A7%A6%E5%8F%91%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="http://example.com/2022/01/12/python/pyinstaller%E5%9F%BA%E7%A1%80%E9%98%B2%E5%8F%8D%E7%BC%96%E8%AF%91/index.html">
 <meta property="og:site_name" content="Leizi的博客">
-<meta property="og:description" content="pyside2使用python的minio api上传文件时，出现时进度条不更新的bug，代码如下  123456789101112131415161718from xxx import minioClientfrom xxx import Progressclass UpLoadSplitProgressBar(QDialog):    #... 代码    def __init__(self">
+<meta property="og:description" content="pyinstaller基础防反编译1234567891011121314151617181920212223242526272829303132333435363738block_cipher &#x3D; pyi_crypto.PyiBlockCipher(key&#x3D;&amp;#x27;0123456789ABCDEF&amp;#x27;)a &#x3D; Analysis(    [&amp;#x27;main.py&amp;#x27;],">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/python/Pyside2-minio%E4%B8%8A%E4%BC%A0%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%97%A0%E6%B3%95%E8%A7%A6%E5%8F%91%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%97%AE%E9%A2%98_1.png">
-<meta property="article:published_time" content="2021-12-29T10:01:26.000Z">
-<meta property="article:modified_time" content="2021-12-30T13:05:44.200Z">
+<meta property="article:published_time" content="2022-01-12T14:27:18.204Z">
+<meta property="article:modified_time" content="2022-01-12T14:30:05.628Z">
 <meta property="article:author" content="leizi">
-<meta property="article:tag" content="bug">
-<meta property="article:tag" content="代码">
+<meta property="article:tag" content="配置">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/python/Pyside2-minio%E4%B8%8A%E4%BC%A0%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%97%A0%E6%B3%95%E8%A7%A6%E5%8F%91%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%97%AE%E9%A2%98_1.png">
   
   <title>Pyside2 minio上传进度条无法触发信号的问题 - Leizi的博客</title>
 
@@ -193,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-12-29 18:01" pubdate>
-        2021年12月29日 晚上
+      <time datetime="2022-01-12 22:27" pubdate>
+        2022年1月12日 晚上
       </time>
     </span>
   
@@ -204,7 +201,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      672 字
     </span>
   
 
@@ -213,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      2 分钟
     </span>
   
 
@@ -253,26 +250,8 @@
             <h1 style="display: none">Pyside2 minio上传进度条无法触发信号的问题</h1>
             
             <div class="markdown-body">
-              <blockquote>
-<p>pyside2使用python的minio api上传文件时，出现时进度条不更新的bug，代码如下</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> xxx <span class="hljs-keyword">import</span> minioClient<br><span class="hljs-keyword">from</span> xxx <span class="hljs-keyword">import</span> Progress<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UpLoadSplitProgressBar</span>(<span class="hljs-params">QDialog</span>):</span><br>    <span class="hljs-comment">#... 代码</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, ...</span>):</span><br>        <span class="hljs-built_in">super</span>(UpLoadSplitProgressBar, self).__init__(parent)<br>        <span class="hljs-comment">#...  代码</span><br>        self.progress = Progress()  <span class="hljs-comment"># 进度线程</span><br>  		self.progress.progress_signal.progress.connect(self.update_progress) <span class="hljs-comment"># 编号为1 Qt.DirectConnection</span><br>        <br>    <span class="hljs-comment"># 上传文件</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upload</span>(<span class="hljs-params">self, ...</span>):</span><br>        minioClient.put_object(MINIO_PLATFORM_BUCKET, upload_path,<br>                           file_data, origFileSize, progress=self.progress)<br>        <br><span class="hljs-meta">	@Slot(<span class="hljs-params"><span class="hljs-built_in">int</span></span>)</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_progress</span>(<span class="hljs-params">self, size</span>):</span><br>        <span class="hljs-built_in">print</span>(size) <span class="hljs-comment"># 编号为2</span><br></code></pre></td></tr></table></figure>
+              <h2 id="pyinstaller基础防反编译"><a href="#pyinstaller基础防反编译" class="headerlink" title="pyinstaller基础防反编译"></a>pyinstaller基础防反编译</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs python">block_cipher = pyi_crypto.PyiBlockCipher(key=<span class="hljs-string">&#x27;0123456789ABCDEF&#x27;</span>)<br><br><br>a = Analysis(<br>    [<span class="hljs-string">&#x27;main.py&#x27;</span>],<br>    pathex=[<span class="hljs-string">&#x27;C:\self\programs\deTest\pytest&#x27;</span>], <span class="hljs-comment"># change to your path</span><br>    binaries=[],<br>    datas=[],<br>    hiddenimports=[],<br>    hookspath=[],<br>    runtime_hooks=[],<br>    excludes=[],<br>    win_no_prefer_redirects=<span class="hljs-literal">False</span>,<br>    win_private_assemblies=<span class="hljs-literal">False</span>,<br>    cipher=block_cipher,<br>    noarchive=<span class="hljs-literal">False</span><br>)<br>pyz = PYZ(<br>    a.pure,<br>    a.zipped_data,<br>    cipher=block_cipher<br>)<br>exe = EXE(<br>    pyz,<br>    a.scripts,<br>    a.binaries,<br>    a.zipfiles,<br>    a.datas,<br>    [],<br>    name=<span class="hljs-string">&#x27;main&#x27;</span>,<br>    debug=<span class="hljs-literal">False</span>,<br>    bootloader_ignore_signals=<span class="hljs-literal">False</span>,<br>    strip=<span class="hljs-literal">False</span>,<br>    upx=<span class="hljs-literal">True</span>,<br>    upx_exclude=[],<br>    runtime_tmpdir=<span class="hljs-literal">None</span>,<br>    console=<span class="hljs-literal">True</span><br>)<br></code></pre></td></tr></table></figure>
 
-<p>其中progress为minio的一个可选参数，需要传入一个线程对象，</p>
-<p>以下为线程对象关键代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 信号对象</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WorkerSignals</span>(<span class="hljs-params">QObject</span>):</span><br>    progress = Signal(<span class="hljs-built_in">int</span>)<br>    up_done = Signal(<span class="hljs-built_in">int</span>)<br>   		<br><span class="hljs-comment"># 进度线程对象        </span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Progress</span>(<span class="hljs-params">Thread</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, progress_index=<span class="hljs-number">1</span>, interval=<span class="hljs-number">1</span></span>):</span><br>        Thread.__init__(self)<br>        <span class="hljs-comment">#... 代码</span><br>        self.progress_signal = WorkerSignals()<br>        <span class="hljs-comment">#... 代码</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-keyword">try</span>:<br>        	task = self.display_queue.get(timeout=self.interval)<br>        <span class="hljs-keyword">except</span> queue_empty:<br>        	<span class="hljs-keyword">continue</span><br>        upsize, current_size, total_length = task<br>        self.progress_signal.progress.emit(upsize) <span class="hljs-comment"># 编号为3</span><br>        <span class="hljs-comment">#... 代码</span><br></code></pre></td></tr></table></figure>
-
-<p>在队列拿到task的upsize之后，需要把upsize通过信号的方式传递出去 如<strong>3号</strong>代码</p>
-<p><strong>但是在进度条窗口弹出之后，进度一直是0</strong> </p>
-<blockquote>
-<p>排查后发现，当文件上传完成之后，<strong>2号</strong>代码才被逐一触发，在这之前，代码运行是完成了，但是信号没有触发，而是被存储到了一个信号队列里，并且<strong>阻塞住</strong>了</p>
-</blockquote>
-<p>最后根据信号文档</p>
-<p><img src="/img/python/Pyside2-minio%E4%B8%8A%E4%BC%A0%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%97%A0%E6%B3%95%E8%A7%A6%E5%8F%91%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%97%AE%E9%A2%98_1.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>只需要将<strong>1号</strong>代码改为如下就行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> xxx <span class="hljs-keyword">import</span> minioClient<br><span class="hljs-keyword">from</span> xxx <span class="hljs-keyword">import</span> Progress<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UpLoadSplitProgressBar</span>(<span class="hljs-params">QDialog</span>):</span><br>    <span class="hljs-comment">#... 代码</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, ...</span>):</span><br>        <span class="hljs-built_in">super</span>(UpLoadSplitProgressBar, self).__init__(parent)<br>        <span class="hljs-comment">#...  代码</span><br>        self.progress = Progress()  <span class="hljs-comment"># 进度线程</span><br>  		self.progress.progress_signal.progress.connect(self.update_progress, Qt.DirectConnection) <span class="hljs-comment"># 编号为1 </span><br>        <br>    <span class="hljs-comment"># 上传文件</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upload</span>(<span class="hljs-params">self, ...</span>):</span><br>        minioClient.put_object(MINIO_PLATFORM_BUCKET, upload_path,<br>                           file_data, origFileSize, progress=self.progress)<br>        <br><span class="hljs-meta">	@Slot(<span class="hljs-params"><span class="hljs-built_in">int</span></span>)</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_progress</span>(<span class="hljs-params">self, size</span>):</span><br>        <span class="hljs-built_in">print</span>(size) <span class="hljs-comment"># 编号为2</span><br></code></pre></td></tr></table></figure>
-
-<p>此时会启动一个信号线程，信号不会阻塞，触发之后，信号就会直接发送并触发<strong>2号</strong>代码。</p>
 
             </div>
             <hr>
@@ -284,7 +263,7 @@
                     
                       <a class="hover-with-bg" href="/categories/python/">python</a>
                     
-                      <a class="hover-with-bg" href="/categories/python/pyside2/">pyside2</a>
+                      <a class="hover-with-bg" href="/categories/python/pyinstaller/">pyinstaller</a>
                     
                   </div>
                 
@@ -292,9 +271,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/bug/">bug</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E4%BB%A3%E7%A0%81/">代码</a>
+                      <a class="hover-with-bg" href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
                     
                   </div>
                 
@@ -311,7 +288,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/12/python/pyinstaller%E5%9F%BA%E7%A1%80%E9%98%B2%E5%8F%8D%E7%BC%96%E8%AF%91/">
+                      <a href="/2022/01/12/javascript/opencvnodejs4-264%E8%BD%ACmp4/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Pyside2 minio上传进度条无法触发信号的问题</span>
                         <span class="visible-mobile">上一篇</span>
@@ -321,8 +298,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/12/11/python/Pyside2%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95%E6%B7%BB%E5%8A%A0%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%97%A0%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
-                        <span class="hidden-mobile">Pyside2右键菜单添加快捷键无效的解决办法</span>
+                      <a href="/2021/12/29/python/Pyside2%20minio%E4%B8%8A%E4%BC%A0%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%97%A0%E6%B3%95%E8%A7%A6%E5%8F%91%E4%BF%A1%E5%8F%B7%E7%9A%84%E9%97%AE%E9%A2%98/">
+                        <span class="hidden-mobile">Pyside2 minio上传进度条无法触发信号的问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
